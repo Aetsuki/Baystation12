@@ -682,7 +682,7 @@
 		/datum/mil_rank/fleet/o1
 	)
 
-	access = list(access_medical, access_morgue, access_maint_tunnels, access_emergency_storage,
+	access = list(access_medical, access_morgue, access_virology, access_maint_tunnels, access_emergency_storage,
 			            access_crematorium, access_chemistry, access_surgery,
 			            access_medical_equip, access_solgov_crew, access_senmed)
 
@@ -1152,8 +1152,8 @@
 	department = "Civilian"
 	department_flag = CIV
 
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	availablity_chance = 30
 	supervisors = "the invisible hand of the market"
 	selection_color = "#515151"

@@ -9,7 +9,6 @@
 	#include "torch_ranks.dm"
 	#include "torch_shuttles.dm"
 	#include "torch_unit_testing.dm"
-	#include "torch_gamemodes.dm"
 	#include "torch_antagonism.dm"
 	#include "torch_npcs.dm"
 	#include "torch_security_state.dm"
@@ -81,6 +80,7 @@
 	#include "../away/smugglers/smugglers.dm"
 	#include "../away/magshield/magshield.dm"
 	#include "../away/casino/casino.dm"
+	#include "../away/yacht/yacht.dm"
 
 	#include "../../code/modules/lobby_music/chasing_time.dm"
 	#include "../../code/modules/lobby_music/human.dm"

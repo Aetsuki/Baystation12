@@ -25,6 +25,9 @@
 	hud = null
 	. = ..()
 
+/obj/item/clothing/glasses/needs_vision_update()
+	return ..() || overlay || vision_flags || see_invisible || darkness_view
+
 /obj/item/clothing/glasses/emp_act(severity)
 	if(electric)
 		if(istype(src.loc, /mob/living/carbon/human))
@@ -119,7 +122,7 @@
 	name = "tactical goggles"
 	desc = "Self-polarizing goggles with light amplification for dark environments. Made from durable synthetic."
 	icon_state = "swatgoggles"
-	origin_tech = list(TECH_MAGNET = 2)
+	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 4)
 	darkness_view = 5
 	action_button_name = "Toggle Goggles"
 	toggleable = 1
@@ -214,10 +217,6 @@
 	darkness_view = -1
 	flash_protection = FLASH_PROTECTION_MODERATE
 
-/obj/item/clothing/glasses/sunglasses/New()
-	..()
-	overlay = GLOB.global_hud.sunglasses
-
 /obj/item/clothing/glasses/welding
 	name = "welding goggles"
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
@@ -225,6 +224,7 @@
 	item_state = "welding-g"
 	action_button_name = "Flip Welding Goggles"
 	matter = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 1000)
+	use_alt_layer = TRUE
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -318,7 +318,6 @@
 /obj/item/clothing/glasses/sunglasses/sechud/toggle/New()
 	..()
 	hud_holder = hud
-	overlay = null
 
 /obj/item/clothing/glasses/sunglasses/sechud/toggle/Destroy()
 	qdel(hud_holder)
@@ -332,11 +331,9 @@
 		if(on)
 			flash_protection = FLASH_PROTECTION_NONE
 			src.hud = hud_holder
-			overlay = null
 			to_chat(user, "You switch \the [src] to HUD mode.")
 		else
 			flash_protection = initial(flash_protection)
-			overlay = GLOB.global_hud.sunglasses
 			src.hud = null
 			to_chat(user, "You switch \the [src] to flash protection mode.")
 		update_icon()
