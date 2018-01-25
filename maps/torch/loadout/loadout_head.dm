@@ -24,7 +24,6 @@
 	berets["home guard beret"] = /obj/item/clothing/head/beret/solgov/homeguard
 	berets["gateway administration beret"] = /obj/item/clothing/head/beret/solgov/gateway
 	berets["customs and trade beret"] = /obj/item/clothing/head/beret/solgov/customs
-	berets["orbital assault beret"] = /obj/item/clothing/head/beret/solgov/orbital
 	berets["government research beret"] = /obj/item/clothing/head/beret/solgov/research
 	berets["health service beret"] = /obj/item/clothing/head/beret/solgov/health
 	berets["diplomatic security beret"] = /obj/item/clothing/head/beret/solgov/diplomatic
@@ -35,11 +34,6 @@
 	display_name = "beret, NanoTrasen security"
 	path = /obj/item/clothing/head/beret/guard
 	allowed_roles = list(/datum/job/guard)
-
-/datum/gear/head/solhat
-	display_name = "Sol Central Government Cap"
-	path = /obj/item/clothing/head/soft/solgov
-	allowed_roles = SOLGOV_ROLES
 
 /datum/gear/head/veteranhat
 	display_name = "veteran hat"
@@ -184,12 +178,6 @@
 	cost = 0
 	allowed_roles = SOLGOV_ROLES
 
-/datum/gear/head/marinehat
-	display_name = "marine cap"
-	path = /obj/item/clothing/head/solgov/utility/marine
-	cost = 0
-	allowed_roles = SOLGOV_ROLES
-
 /datum/gear/head/echat
 	display_name = "EC cap"
 	path = /obj/item/clothing/head/soft/solgov/expedition
@@ -220,3 +208,7 @@
 	welding_masks += /obj/item/clothing/head/welding/knight
 	welding_masks += /obj/item/clothing/head/welding/carp
 	gear_tweaks += new/datum/gear_tweak/path(assoc_by_proc(welding_masks, /proc/get_initial_name))
+
+/datum/gear/head/tankccap
+	display_name = "padded cap"
+	path = /obj/item/clothing/head/tank 

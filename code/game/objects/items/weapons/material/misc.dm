@@ -21,6 +21,7 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
+	hitsound = "chop"
 
 /obj/item/weapon/material/hatchet/unathiknife
 	name = "duelling knife"
@@ -44,6 +45,10 @@
 	icon_state = "machete"
 	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT
+
+/obj/item/weapon/material/hatchet/machete/Initialize()
+	icon_state = "machete[pick("","_red","_blue", "_black", "_olive")]"
+	. = ..()
 
 /obj/item/weapon/material/hatchet/machete/deluxe
 	name = "deluxe machete"

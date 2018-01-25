@@ -67,6 +67,12 @@ medals
 	desc = "A white heart emblazoned with a red cross awarded to members of the SCG for service as a medical professional in a combat zone."
 	icon_state = "white_heart"
 
+/obj/item/clothing/accessory/solgov/torch_patch
+	name = "\improper Torch mission patch"
+	desc = "A fire resistant shoulder patch, worn by the personnel involved in the Torch Project."
+	icon_state = "torchpatch"
+	slot = ACCESSORY_SLOT_INSIGNIA
+
 /******
 ribbons
 ******/
@@ -106,6 +112,9 @@ specialty pins
 	desc = "A color blaze denoting fleet personnel in some special role. This one is silver."
 	icon_state = "marinerank_command"
 	slot = ACCESSORY_SLOT_INSIGNIA
+
+/obj/item/clothing/accessory/solgov/specialty/get_fibers()
+	return null
 
 /obj/item/clothing/accessory/solgov/specialty/janitor
 	name = "custodial blazes"
@@ -213,7 +222,7 @@ armour attachments
 	desc = "An emblem depicting the Sol Central Government's flag."
 	icon_override = 'maps/torch/icons/obj/solgov-accessory.dmi'
 	icon = 'maps/torch/icons/obj/solgov-accessory.dmi'
-	accessory_icons = list(slot_w_uniform_str = 'maps/torch/icons/mob/solgov-accessory.dmi', slot_wear_suit_str = 'maps/torch/icons/mob/solgov-accessory.dmi')
+	accessory_icons = list(slot_tie_str = 'maps/torch/icons/mob/solgov-accessory.dmi', slot_w_uniform_str = 'maps/torch/icons/mob/solgov-accessory.dmi', slot_wear_suit_str = 'maps/torch/icons/mob/solgov-accessory.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 
@@ -236,6 +245,10 @@ armour attachments
 	name = "\improper POLICE tag"
 	desc = "An armor tag with the words POLICE printed in gold lettering on it."
 	icon_state = "comsectag"
+
+/obj/item/clothing/accessory/armor/helmcover/blue/sol
+	name = "peacekeeper helmet cover"
+	desc = "A fabric cover for armored helmets. This one is in SCG peacekeeper colors."
 
 /**************
 department tags
@@ -363,6 +376,10 @@ ranks - ec
 	on_rolled = list("down" = "none")
 	slot = ACCESSORY_SLOT_RANK
 	gender = PLURAL
+	high_visibility = 1
+
+/obj/item/clothing/accessory/solgov/rank/get_fibers()
+	return null
 
 /obj/item/clothing/accessory/solgov/rank/ec
 	name = "explorer ranks"
@@ -375,15 +392,15 @@ ranks - ec
 	desc = "Insignia denoting the rank of Apprentice Explorer."
 	icon_state = "ecrank_e1"
 
-/obj/item/clothing/accessory/solgov/rank/ec/enlisted/e2
-	name = "ranks (E-2 explorer)"
+/obj/item/clothing/accessory/solgov/rank/ec/enlisted/e3
+	name = "ranks (E-3 explorer)"
 	desc = "Insignia denoting the rank of Explorer."
-	icon_state = "ecrank_e2"
+	icon_state = "ecrank_e3"
 
-/obj/item/clothing/accessory/solgov/rank/ec/enlisted/e4
-	name = "ranks (E-4 senior explorer)"
+/obj/item/clothing/accessory/solgov/rank/ec/enlisted/e5
+	name = "ranks (E-5 senior explorer)"
 	desc = "Insignia denoting the rank of Senior Explorer."
-	icon_state = "ecrank_e4"
+	icon_state = "ecrank_e5"
 
 /obj/item/clothing/accessory/solgov/rank/ec/enlisted/e7
 	name = "ranks (E-7 chief explorer)"

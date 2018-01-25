@@ -197,7 +197,7 @@
 	path = /obj/item/clothing/accessory/storage/brown_vest
 	cost = 3
 	allowed_roles = list(/datum/job/chief_engineer, /datum/job/senior_engineer, /datum/job/engineer, /datum/job/engineer_contractor, /datum/job/roboticist, /datum/job/qm, /datum/job/cargo_tech,
-						/datum/job/cargo_contractor, /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/solgov_pilot, /datum/job/nt_pilot)
+						/datum/job/cargo_contractor, /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/nt_pilot)
 
 /datum/gear/accessory/black_vest
 	display_name = "webbing, security"
@@ -299,6 +299,21 @@
 	tags["blood patch, AB-"] = /obj/item/clothing/accessory/armor/tag/abneg
 	gear_tweaks += new/datum/gear_tweak/path(tags)
 
+/datum/gear/accessory/helm_covers
+	display_name = "helmet covers"
+	path = /obj/item/clothing/accessory/armor/helmcover
+	allowed_roles = ARMORED_ROLES
+
+/datum/gear/accessory/helm_covers/New()
+	..()
+	var/covers = list()
+	covers["green helmet cover"] = /obj/item/clothing/accessory/armor/helmcover/green
+	covers["navy blue helmet cover"] = /obj/item/clothing/accessory/armor/helmcover/navy
+	covers["tan helmet cover"] = /obj/item/clothing/accessory/armor/helmcover/tan
+	covers["PCRC helmet cover"] = /obj/item/clothing/accessory/armor/helmcover/pcrc
+	covers["SAARE helmet cover"] = /obj/item/clothing/accessory/armor/helmcover/saare
+	gear_tweaks += new/datum/gear_tweak/path(covers)
+
 /datum/gear/accessory/hawaii
 	display_name = "hawaii shirt"
 	path = /obj/item/clothing/accessory/toggleable/hawaii
@@ -385,3 +400,12 @@
 	flags = GEAR_HAS_COLOR_SELECTION
 	sort_category = "Accessories"
 	allowed_roles = SEMIFORMAL_ROLES
+
+/datum/gear/accessory/torch_patch
+	display_name = "Torch mission patch"
+	path = /obj/item/clothing/accessory/solgov/torch_patch
+
+/datum/gear/accessory/pilot_pin
+	display_name = "pilot's qualification pin"
+	path = /obj/item/clothing/accessory/solgov/speciality/pilot
+	allowed_roles = list(/datum/job/bridgeofficer)

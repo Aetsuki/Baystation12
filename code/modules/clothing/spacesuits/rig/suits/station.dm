@@ -9,7 +9,7 @@
 	offline_slowdown = 0
 	offline_vision_restriction = 0
 
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/briefcase,/obj/item/weapon/storage/secure/briefcase)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/briefcase, /obj/item/weapon/storage/secure/briefcase)
 
 	req_access = list()
 	req_one_access = list()
@@ -29,7 +29,8 @@
 		/obj/item/rig_module/device/flash,
 		/obj/item/rig_module/device/paperdispenser,
 		/obj/item/rig_module/device/pen,
-		/obj/item/rig_module/device/stamp
+		/obj/item/rig_module/device/stamp,
+		/obj/item/rig_module/cooling_unit
 		)
 
 	glove_type = null
@@ -75,11 +76,12 @@
 /obj/item/weapon/rig/industrial/equipped
 
 	initial_modules = list(
-		/obj/item/rig_module/device/plasmacutter,
+		/obj/item/rig_module/mounted/plasmacutter,
 		/obj/item/rig_module/device/drill,
 		/obj/item/rig_module/device/orescanner,
 		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/eva
@@ -119,11 +121,14 @@
 
 /obj/item/weapon/rig/eva/equipped
 
+	req_access = list(access_engine_equip)
+
 	initial_modules = list(
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/ce
@@ -132,7 +137,7 @@
 	suit_type = "engineering hardsuit"
 	desc = "An advanced hardsuit that protects against hazardous, low pressure environments. Shines with a high polish. Appears compatible with the physiology of most species."
 	icon_state = "ce_rig"
-	armor = list(melee = 40, bullet = 10, laser = 30,energy = 25, bomb = 40, bio = 100, rad = 100)
+	armor = list(melee = 40, bullet = 25, laser = 30, energy = 25, bomb = 40, bio = 100, rad = 100)
 	online_slowdown = 0
 	offline_slowdown = 0
 	offline_vision_restriction = TINT_HEAVY
@@ -140,7 +145,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ce
 	glove_type = /obj/item/clothing/gloves/rig/ce
 
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/ore,/obj/item/weapon/storage/toolbox,/obj/item/weapon/storage/briefcase/inflatable,/obj/item/weapon/inflatable_dispenser,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe,/obj/item/weapon/rcd)
+	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/storage/ore,/obj/item/weapon/storage/toolbox,/obj/item/weapon/storage/briefcase/inflatable,/obj/item/weapon/inflatable_dispenser,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe,/obj/item/weapon/rcd)
 
 	req_access = list()
 	req_one_access = list()
@@ -154,7 +159,10 @@
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/plasmacutter,
 		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/rig_module/device/flash,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/grenade_launcher/mfoam,
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/clothing/head/helmet/space/rig/ce
@@ -204,7 +212,8 @@
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
 		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/anomaly_scanner
+		/obj/item/rig_module/device/anomaly_scanner,
+		/obj/item/rig_module/cooling_unit,
 		)
 
 /obj/item/weapon/rig/medical
@@ -248,7 +257,8 @@
 		/obj/item/rig_module/chem_dispenser/injector,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/healthscanner,
-		/obj/item/rig_module/vision/medhud
+		/obj/item/rig_module/vision/medhud,
+		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/weapon/rig/hazard
@@ -291,5 +301,6 @@
 		/obj/item/rig_module/vision/sechud,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/mounted/taser
+		/obj/item/rig_module/mounted/taser,
+		/obj/item/rig_module/cooling_unit
 		)

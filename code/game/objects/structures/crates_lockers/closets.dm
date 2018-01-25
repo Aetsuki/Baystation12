@@ -10,7 +10,7 @@
 	var/icon_opened = "open"
 
 	var/icon_locked
-	var/icon_broken
+	var/icon_broken = "sparks"
 	var/icon_off
 
 	var/welded = 0
@@ -24,7 +24,7 @@
 	var/close_sound = 'sound/effects/locker_close.ogg'
 
 	var/storage_types = CLOSET_STORAGE_ALL
-	var/setup
+	var/setup = CLOSET_CAN_BE_WELDED
 
 	// TODO: Turn these into flags. Skipped it for now because it requires updating 100+ locations...
 	var/broken = FALSE
@@ -308,7 +308,7 @@
 		src.welded = !src.welded
 		src.update_icon()
 		user.visible_message("<span class='warning'>\The [src] has been [welded?"welded shut":"unwelded"] by \the [user].</span>", blind_message = "You hear welding.", range = 3)
-	if(setup & CLOSET_HAS_LOCK)
+	else if(setup & CLOSET_HAS_LOCK)
 		src.togglelock(user, W)
 	else
 		src.attack_hand(user)
@@ -393,6 +393,7 @@
 	if(!opened)
 		if(broken && icon_off)
 			icon_state = icon_off
+			overlays += icon_broken
 		else if((setup & CLOSET_HAS_LOCK) && locked && icon_locked)
 			icon_state = icon_locked
 		else
@@ -509,7 +510,7 @@
 		update_icon()
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>Access Denied</span>")
+		to_chat(user, "<span class='warning'>Access denied!</span>")
 		return FALSE
 
 /obj/structure/closet/proc/CanToggleLock(var/mob/user, var/obj/item/weapon/card/id/id_card)
@@ -542,9 +543,6 @@
 /obj/structure/closet/emag_act(var/remaining_charges, var/mob/user, var/emag_source, var/visual_feedback = "", var/audible_feedback = "")
 	if(make_broken())
 		update_icon()
-		if(icon_broken)
-			flick(icon_broken, src)
-
 		if(visual_feedback)
 			visible_message(visual_feedback, audible_feedback)
 		else if(user && emag_source)

@@ -29,7 +29,7 @@ var/list/mob_hat_cache = list()
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	pass_flags = PASSTABLE
+	pass_flags = PASS_FLAG_TABLE
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
@@ -37,6 +37,7 @@ var/list/mob_hat_cache = list()
 	integrated_light_power = 3
 	local_transmit = 1
 	possession_candidate = 1
+	speed = -1
 
 	can_pull_size = ITEM_SIZE_NORMAL
 	can_pull_mobs = MOB_PULL_SMALLER

@@ -343,7 +343,7 @@
 		if(prob(1 + W.force * 5))
 
 			user.visible_message("<span class='warning'>[user.name] smashed the light!</span>", "<span class='warning'>You smash the light!</span>", "You hear a tinkle of breaking glass")
-			if(on && (W.flags & CONDUCT))
+			if(on && (W.obj_flags & OBJ_FLAG_CONDUCTIBLE))
 				if (prob(12))
 					electrocute_mob(user, get_area(src), src, 0.3)
 			broken()
@@ -361,7 +361,7 @@
 			return
 
 		to_chat(user, "You stick \the [W] into the light socket!")
-		if(powered() && (W.flags & CONDUCT))
+		if(powered() && (W.obj_flags & OBJ_FLAG_CONDUCTIBLE))
 			var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
@@ -546,9 +546,9 @@
 	item_state = "c_tube"
 	matter = list("glass" = 100)
 
-	brightness_range = 6	// luminosity when on, also used in power calculation
+	brightness_range = 7	// luminosity when on, also used in power calculation
 	brightness_power = 6
-	brightness_color = "#fffeb8"
+	brightness_color = "#fffee0"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY = list(l_range = 4, l_power = 1, l_color = "#da0205"),
 		)
@@ -557,7 +557,7 @@
 /obj/item/weapon/light/tube/large
 	w_class = ITEM_SIZE_SMALL
 	name = "large light tube"
-	brightness_range = 8
+	brightness_range = 9
 	brightness_power = 6
 
 /obj/item/weapon/light/bulb

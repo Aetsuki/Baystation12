@@ -7,6 +7,7 @@
 	w_class = ITEM_SIZE_LARGE
 	force = 10
 	one_hand_penalty = 2
+	accuracy = 2
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
@@ -107,6 +108,7 @@ obj/item/weapon/gun/energy/retro
 	charge_cost = 15
 	max_shots = 10
 	wielded_item_state = "gun_wielded"
+	combustion = 0
 
 /obj/item/weapon/gun/energy/xray/pistol
 	name = "x-ray laser gun"

@@ -25,15 +25,20 @@
 	var/flesh_color = "#ffc896"               // Pink.
 	var/blood_oxy = 1
 	var/base_color                            // Used by changelings. Should also be used for icon previes..
+	var/limb_blend = ICON_ADD
 	var/tail                                  // Name of tail state in species effects icon file.
 	var/tail_animation                        // If set, the icon to obtain tail animation states from.
+	var/tail_blend = ICON_ADD
 	var/tail_hair
+
+	var/eye_icon = "eyes_s"
+	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 	var/default_h_style = "Bald"
 	var/default_f_style = "Shaved"
 
 	var/race_key = 0                          // Used for mob icon cache string.
-	var/icon/icon_template                    // Used for mob icon generation for non-32x32 species.
+	var/icon/icon_template = 'icons/mob/human_races/r_template.dmi' // Used for mob icon generation for non-32x32 species.
 	var/pixel_offset_x = 0                    // Used for offsetting large icons.
 	var/pixel_offset_y = 0                    // Used for offsetting large icons.
 
@@ -134,7 +139,7 @@
 	var/has_fine_manipulation = 1 // Can use small items.
 	var/siemens_coefficient = 1   // The lower, the thicker the skin and better the insulation.
 	var/darksight = 2             // Native darksight distance.
-	var/flags = 0                 // Various specific features.
+	var/species_flags = 0         // Various specific features.
 	var/appearance_flags = 0      // Appearance/display related features.
 	var/spawn_flags = 0           // Flags that specify who can spawn as this species
 	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
@@ -186,6 +191,8 @@
 	var/breathing_sound = 'sound/voice/monkey.ogg'
 	var/list/equip_adjust = list()
 	var/list/equip_overlays = list()
+
+	var/sexybits_location	//organ tag where they are located if they can be kicked for increased pain
 /*
 These are all the things that can be adjusted for equipping stuff and
 each one can be in the NORTH, SOUTH, EAST, and WEST direction. Specify
@@ -394,6 +401,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		return 1
 
 	H.set_fullscreen(H.eye_blind && !H.equipment_prescription, "blind", /obj/screen/fullscreen/blind)
+	H.set_fullscreen(H.stat == UNCONSCIOUS, "blackout", /obj/screen/fullscreen/blackout)
 
 	if(config.welder_vision)
 		H.set_fullscreen(H.equipment_tint_total, "welder", /obj/screen/fullscreen/impaired, H.equipment_tint_total)
@@ -477,7 +485,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				return W.afterattack(shoot_to,target)
 
 	var/randn = rand(1, 100)
-	if(!(flags & NO_SLIP) && randn <= 25)
+	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && randn <= 25)
 		var/armor_check = target.run_armor_check(affecting, "melee")
 		target.apply_effect(3, WEAKEN, armor_check)
 		playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
